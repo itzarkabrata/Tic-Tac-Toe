@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Tic-Tac-Toe</h1>
+    <p>minimax powered · two modes</p>
+  </header>
+
+  <!-- SCREEN 1: Mode Select -->
+  <div class="screen active" id="screen-mode">
+    <div class="mode-buttons">
+      <button class="mode-btn vs-human" onclick="selectMode('2p')">⚔ Two Players</button>
+      <button class="mode-btn vs-ai"    onclick="selectMode('ai')">🤖 Vs AI</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Name / Order Setup -->
+  <div class="screen" id="screen-setup">
+    <div class="input-group" id="name1-group">
+      <label>Player 1 Name (X)</label>
+      <input type="text" id="name1" placeholder="Enter name" maxlength="14">
+    </div>
+    <div class="input-group" id="name2-group">
+      <label id="name2-label">Player 2 Name (O)</label>
+      <input type="text" id="name2" placeholder="Enter name" maxlength="14">
+    </div>
+    <div class="order-group" id="order-group" style="display:none">
+      <label>Who goes first?</label>
+      <div class="order-options">
+        <button class="order-btn selected" id="order-first"  onclick="selectOrder(1)">You (X)</button>
+        <button class="order-btn"          id="order-second" onclick="selectOrder(2)">AI (O)</button>
+      </div>
+    </div>
+    <button class="start-btn" onclick="startGame()">START GAME</button>
+    <button class="back-btn"  onclick="goBack()">← back</button>
+  </div>
+
+  <!-- SCREEN 3: Game -->
+  <div class="screen" id="screen-game">
+
+    <div class="game-info">
+      <div class="player-card x-card" id="card-x">
+        <div class="symbol">X</div>
+        <div class="pname" id="name-x">Player 1</div>
+        <div class="score" id="score-x">0</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="player-card o-card" id="card-o">
+        <div class="symbol">O</div>
+        <div class="pname" id="name-o">Player 2</div>
+        <div class="score" id="score-o">0</div>
+      </div>
+    </div>
+
+    <div class="thinking" id="thinking-indicator">AI THINKING...</div>
+
+    <div class="board" id="board">
+      <div class="cell" data-idx="0" onclick="cellClick(0)"></div>
+      <div class="cell" data-idx="1" onclick="cellClick(1)"></div>
+      <div class="cell" data-idx="2" onclick="cellClick(2)"></div>
+      <div class="cell" data-idx="3" onclick="cellClick(3)"></div>
+      <div class="cell" data-idx="4" onclick="cellClick(4)"></div>
+      <div class="cell" data-idx="5" onclick="cellClick(5)"></div>
+      <div class="cell" data-idx="6" onclick="cellClick(6)"></div>
+      <div class="cell" data-idx="7" onclick="cellClick(7)"></div>
+      <div class="cell" data-idx="8" onclick="cellClick(8)"></div>
+    </div>
+
+    <div class="status-bar" id="status-bar">Choose a cell to begin</div>
+
+    <div class="game-actions">
+      <button class="action-btn primary" onclick="resetBoard()">New Round</button>
+      <button class="action-btn"         onclick="goMenu()">Main Menu</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
